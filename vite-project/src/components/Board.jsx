@@ -48,13 +48,16 @@ const Board = () => {
               height: "40px",
               borderRadius: "10px",
               fontWeight: "700",
-            }}
+            }
+          }
+          onClick={()=>setState(Array(9).fill(null))}
           >
             Play Again!
           </button>
         </div>
       ) : (
         <>
+        <h4 style={{textAlign:"center"}}>Player  Turn.</h4>
           <div className="board-rows">
             <Square value={state[0]} onClick={() => handleClick(0)} />
             <Square value={state[1]} onClick={() => handleClick(1)} />
