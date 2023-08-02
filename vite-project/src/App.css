@@ -9,7 +9,14 @@
   
 }
 .board-container{
+  
 margin: 20px;
+}
+.header{
+  
+  text-align: center;
+  margin-top: 5em;
+  margin-bottom: 7em;
 }
 
  .board-rows{
