@@ -22,6 +22,9 @@ const Board = () => {
         return state[a];
       }
     }
+    if (state.every((square) => square !== null)) {
+      return "Draw";
+    }
     return false;
   };
 
@@ -35,7 +38,7 @@ const Board = () => {
     }
 
     const copyState = [...state]; //copies all the elements of existing state using the spread operator
-    copyState[index] = isXTurn ? "X" : "0";
+    copyState[index] = isXTurn ? "X" : "O";
     setState(copyState); //updates the original state with setState function
 
     setXTurn(!isXTurn);
@@ -44,7 +47,13 @@ const Board = () => {
     <div className="board-container">
       {isWinner ? (
         <div style={{ textAlign: "center", marginTop: "15em" }}>
-          <h1>Player {isWinner} won the game!</h1>
+          {isWinner === "Draw" ? (
+            <h1>It's a Draw!</h1>
+          ) : (
+            <h1> {isWinner} is the winner</h1>
+          )}
+          
+          
           <button
             style={{
               border: "1px solid #fff",
