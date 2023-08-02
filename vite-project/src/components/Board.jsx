@@ -30,6 +30,10 @@ const Board = () => {
   console.log(state);
 
   const handleClick = (index) => {
+    if(state[index]!= null){
+      return;
+    }
+
     const copyState = [...state]; //copies all the elements of existing state using the spread operator
     copyState[index] = isXTurn ? "X" : "0";
     setState(copyState); //updates the original state with setState function
@@ -48,6 +52,7 @@ const Board = () => {
               height: "40px",
               borderRadius: "10px",
               fontWeight: "700",
+              cursor:"pointer"
             }
           }
           onClick={()=>setState(Array(9).fill(null))}
@@ -57,7 +62,7 @@ const Board = () => {
         </div>
       ) : (
         <>
-        <h4 style={{textAlign:"center"}}>Player  Turn.</h4>
+        <h4 style={{textAlign:"center"}}>Player {isXTurn? "X":"O"} Turn.</h4>
           <div className="board-rows">
             <Square value={state[0]} onClick={() => handleClick(0)} />
             <Square value={state[1]} onClick={() => handleClick(1)} />
